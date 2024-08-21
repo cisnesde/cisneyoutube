@@ -175,20 +175,28 @@
   <script>
     document.getElementById('email-form').addEventListener('submit', function(event) {
       event.preventDefault(); // Evita o envio padrão do formulário
-      
-      var emailInput = document.getElementById('email-input');
-      var messageInput = document.querySelector('textarea[name="message"]');
-      var emailAddress = emailInput.value;
-      var message = messageInput.value;
 
-      // Ao usar o Formspree, você receberá o email e a mensagem do usuário
-      console.log('Novo inscrito:', emailAddress);
-      console.log('Mensagem:', message);
-      showPopup();
+      // Envio do formulário via AJAX
+      var formData = new FormData(this);
+
+      fetch(this.action, {
+        method: this.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(function(response) {
+        if (response.ok) {
+          showPopup();
+        } else {
+          alert('Ocorreu um erro ao enviar sua inscrição. Tente novamente mais tarde.');
+        }
+      }).catch(function(error) {
+        alert('Ocorreu um erro ao enviar sua inscrição. Tente novamente mais tarde.');
+      });
 
       // Limpa os campos após o envio
-      emailInput.value = '';
-      messageInput.value = '';
+      this.reset();
     });
 
     function showPopup() {
