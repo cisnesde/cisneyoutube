@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Minha Landing Page</title>
+  <style>
+    /* Estilos gerais */
+    body {
+      font-family: 'Courier New', monospace;
+      background-color: #1c1c1c;
+      color: #00ff00;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 30px;
+    }
+
+    /* Estilos do formulário */
+    form {
+      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    input[type=email], textarea {
+      padding: 10px;
+      width: 300px;
+      font-size: 16px;
+      background-color: #1c1c1c;
+      color: #00ff00;
+      border: 1px solid #00ff00;
+      margin-bottom: 10px;
+      resize: vertical;
+      max-height: 200px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #00ff00;
+      color: #1c1c1c;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      font-family: 'Courier New', monospace;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    /* Estilos do pop-up de confirmação */
+    .popup {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+      animation: fadeIn 0.5s;
+    }
+
+    .popup-content {
+      background-color: #1c1c1c;
+      margin: 15% auto;
+      padding: 30px;
+      border: 1px solid #00ff00;
+      width: 40%;
+      position: relative;
+      animation: slideIn 0.5s;
+    }
+
+    .popup-content h2, .popup-content p {
+      margin-bottom: 20px;
+    }
+
+    .popup-content .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Estilos da seção de comunidade */
+    .discord-section {
+      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .discord-section img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 2px solid #00ff00;
+      margin-bottom: 20px;
+    }
+
+    .discord-section a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #00ff00;
+      color: #1c1c1c;
+      text-decoration: none;
+      font-family: 'Courier New', monospace;
+      font-size: 16px;
+      margin-top: 20px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .discord-section a:hover {
+      transform: scale(1.1);
+    }
+
+    /* Estilos responsivos para dispositivos móveis */
+    @media (max-width: 767px) {
+      body {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      input[type=email], textarea {
+        width: 100%;
+      }
+
+      .popup-content {
+        width: 90%;
+      }
+    }
+
+    /* Animações */
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Receba Nosso Conteúdo Exclusivo</h1>
+  <form id="email-form" action="https://formspree.io/f/xldrpgop" method="POST">
+    <textarea name="message" placeholder="Deixe uma mensagem (opcional)"></textarea>
+    <input type="email" id="email-input" name="email" placeholder="Seu email" required>
+    <button type="submit">Inscrever-se</button>
+  </form>
+
+  <!-- Pop-up de confirmação -->
+  <div id="confirmation-popup" class="popup">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <h2>Inscrição realizada com sucesso!</h2>
+      <p>Obrigado por se inscrever. Enviaremos o e-book para o seu email em breve.</p>
+      <div class="discord-section">
+        <img src="capa discord.jpg" alt="Comunidade no Discord">
+        <a href="https://discord.gg/g6EjDftMuW">Participar da Comunidade</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('email-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Evita o envio padrão do formulário
+      
+      var emailInput = document.getElementById('email-input');
+      var messageInput = document.querySelector('textarea[name="message"]');
+      var emailAddress = emailInput.value;
+      var message = messageInput.value;
+
+      // Ao usar o Formspree, você receberá o email e a mensagem do usuário
+      console.log('Novo inscrito:', emailAddress);
+      console.log('Mensagem:', message);
+      showPopup();
+
+      // Limpa os campos após o envio
+      emailInput.value = '';
+      messageInput.value = '';
+    });
+
+    function showPopup() {
+      var popup = document.getElementById("confirmation-popup");
+      popup.style.display = "block";
+    }
+
+    function closePopup() {
+      var popup = document.getElementById("confirmation-popup");
+      popup.style.display = "none";
+    }
+  </script>
+</body>
+</html>
