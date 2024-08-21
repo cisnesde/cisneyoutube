@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cisne Youtube</title>
   <style>
     /* Estilos gerais */
@@ -9,17 +11,17 @@
       background-color: #1c1c1c;
       color: #00ff00;
       text-align: center;
-      padding: 50px;
+      padding: 20px;
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin-bottom: 30px;
     }
 
     /* Estilos do formulário */
     form {
-      margin-top: 50px;
+      margin-top: 40px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -27,7 +29,8 @@
 
     input[type=email], textarea {
       padding: 10px;
-      width: 300px;
+      width: 100%;
+      max-width: 400px;
       font-size: 16px;
       background-color: #1c1c1c;
       color: #00ff00;
@@ -38,7 +41,7 @@
     }
 
     button {
-      padding: 10px 20px;
+      padding: 12px 25px;
       background-color: #00ff00;
       color: #1c1c1c;
       border: none;
@@ -68,15 +71,22 @@
 
     .popup-content {
       background-color: #1c1c1c;
-      margin: 15% auto;
-      padding: 30px;
+      margin: 20% auto;
+      padding: 20px;
       border: 1px solid #00ff00;
-      width: 40%;
+      width: 90%;
+      max-width: 500px;
       position: relative;
       animation: slideIn 0.5s;
     }
 
-    .popup-content h2, .popup-content p {
+    .popup-content h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .popup-content p {
+      font-size: 1rem;
       margin-bottom: 20px;
     }
 
@@ -90,15 +100,15 @@
 
     /* Estilos da seção de comunidade */
     .discord-section {
-      margin-top: 50px;
+      margin-top: 30px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
     .discord-section img {
-      width: 200px;
-      height: 200px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       border: 2px solid #00ff00;
       margin-bottom: 20px;
@@ -122,20 +132,30 @@
 
     /* Estilos responsivos para dispositivos móveis */
     @media (max-width: 767px) {
-      body {
-        padding: 20px;
-      }
-
       h1 {
         font-size: 2rem;
       }
 
-      input[type=email], textarea {
+      .popup-content {
         width: 100%;
+        margin: 30% auto;
       }
 
-      .popup-content {
-        width: 90%;
+      .popup-content h2 {
+        font-size: 1.5rem;
+      }
+
+      .popup-content p {
+        font-size: 0.9rem;
+      }
+
+      .discord-section img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .discord-section a {
+        font-size: 14px;
       }
     }
 
@@ -211,3 +231,4 @@
   </script>
 </body>
 </html>
+
